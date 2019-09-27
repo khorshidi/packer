@@ -25,7 +25,7 @@ public class PackerTest {
     }
 
     @Test
-    public void pack() throws Exception {
+    public void pack_simple_empty() throws Exception {
         String pack = Packer.pack(absolutePath("simple_empty"));
         Assert.assertEquals(pack, "");
     }
@@ -38,6 +38,16 @@ public class PackerTest {
     @Test(expected = APIException.class)
     public void pack_scenario_with_negative_capacity() throws Exception {
         Packer.pack(absolutePath("scenario_with_negative_capacity"));
+    }
+
+    @Test(expected = APIException.class)
+    public void pack_scenario_with_greater_than_100_capacity() throws Exception {
+        Packer.pack(absolutePath("scenario_with_greater_than_100_capacity"));
+    }
+
+    @Test(expected = APIException.class)
+    public void pack_scenario_with_more_than_15_items() throws Exception {
+        Packer.pack(absolutePath("scenario_with_more_than_15_items"));
     }
 
     @Test(expected = APIException.class)
@@ -67,7 +77,7 @@ public class PackerTest {
 
     @Test(expected = APIException.class)
     public void pack_scenario_with_no_item() throws Exception {
-        Packer.pack(absolutePath("scenario_with_no_item.txt"));
+        Packer.pack(absolutePath("scenario_with_no_item"));
     }
 
     @Test(expected = APIException.class)
