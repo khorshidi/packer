@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * @author Taher Khorshidi
  */
-public class PackagingScenario implements Validatable {
+public class PackagingScenario {
 
     private List<Item> items;
     private int capacity;

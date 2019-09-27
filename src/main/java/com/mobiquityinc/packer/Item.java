@@ -3,7 +3,7 @@ package com.mobiquityinc.packer;
 /**
  * @author Taher Khorshidi
  */
-public class Item implements Validatable {
+public class Item {
 
     private int index;
     private double weight;
