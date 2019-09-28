@@ -4,6 +4,8 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
+ * A Package Scenario is particular 0/1 knapsack problem that contains a list of items to be chosen and maximum capacity of knapsack.
+ *
  * @author Taher Khorshidi
  */
 public class PackagingScenario {
@@ -11,6 +13,10 @@ public class PackagingScenario {
     private List<Item> items;
     private int capacity;
 
+    /**
+     * @param items    list of available items.
+     * @param capacity maximum capacity of knapsack.
+     */
     public PackagingScenario(List<Item> items, int capacity) {
         this.items = items;
         this.capacity = capacity;
@@ -24,6 +30,11 @@ public class PackagingScenario {
         return capacity;
     }
 
+    /**
+     * this method solves the knapsack problem using Dynamic Programming technique.
+     *
+     * @return a {@link Package} that have maximum cost.
+     */
     public Package solve() {
         this.capacity = capacity * 100;
         int count = items.size();

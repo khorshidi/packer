@@ -8,18 +8,28 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
+ * The class {@link LineParser} is responsible for parsing a line from input file.
+ * A line pattern is "capacity : (item1.index,item1.weight,€item2.cost) (item1.index,item1.weight,€item2.cost) ..."
+ * For example this is a valid line:
+ * 81 : (1,53.38,€45) (2,88.62,€98) (3,78.48,€3) (4,72.30,€76) (5,30.18,€9) (6,46.34,€48)
+ *
  * @author Taher Khorshidi
  */
 public class LineParser {
 
-    private List<Validator> scenarioValidators;
-    private List<Validator> itemValidators;
+    private List<Validator<PackagingScenario>> scenarioValidators;
+    private List<Validator<Item>> itemValidators;
 
-    public LineParser(List<Validator> scenarioValidators, List<Validator> itemValidators) {
+    public LineParser(List<Validator<PackagingScenario>> scenarioValidators, List<Validator<Item>> itemValidators) {
         this.scenarioValidators = scenarioValidators;
         this.itemValidators = itemValidators;
     }
 
+    /**
+     * @param line input line.
+     * @return the corresponding {@link PackagingScenario}
+     * @throws ValidationException if the line doesn't match correct line pattern or contains an invalid scenario or any invalid item.
+     */
     public PackagingScenario parse(String line) throws ValidationException {
         Matcher lineMatcher = Pattern.compile("^(-?\\d+) : (.+)").matcher(line);
         if (!lineMatcher.find()) {
@@ -40,7 +50,7 @@ public class LineParser {
     }
 
     private void validateScenario(PackagingScenario scenario) throws ValidationException {
-        for (Validator validator : scenarioValidators) {
+        for (Validator<PackagingScenario> validator : scenarioValidators) {
             validator.validate(scenario);
         }
     }
@@ -64,7 +74,7 @@ public class LineParser {
     }
 
     private void validateItem(Item item) throws ValidationException {
-        for (Validator validator : itemValidators) {
+        for (Validator<Item> validator : itemValidators) {
             validator.validate(item);
         }
     }

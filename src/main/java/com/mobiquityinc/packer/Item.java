@@ -1,6 +1,8 @@
 package com.mobiquityinc.packer;
 
 /**
+ * Data class representing an Item.
+ *
  * @author Taher Khorshidi
  */
 public class Item {
@@ -27,4 +29,3 @@ public class Item {
         return cost;
     }
 }
-
