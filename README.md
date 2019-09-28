@@ -8,10 +8,14 @@ Given weights and values of `n` items, put these items in a knapsack of capacity
 I used [Dynamic Programming](https://en.wikipedia.org/wiki/Dynamic_programming) to solve the problem in this project.
 
 ### build
+```bash
 mvn clean pacakge
+```
 
 ### run tests
+```bash
 mvn clean test
+```
 
 ### usage
 ``` java
