@@ -18,8 +18,8 @@ public class Package {
     }
 
     /**
-     * @return a String representing the package item. The string contains all item indexes separated by ','.
-     * If package is empty returns a '-' character.
+     * @return a String representing the package item. The string contains all item indexes separated by ','. If package
+     * is empty returns a '-' character.
      */
     public String output() {
         if (items.isEmpty()) {

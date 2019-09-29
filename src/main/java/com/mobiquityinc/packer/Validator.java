@@ -1,7 +1,6 @@
 package com.mobiquityinc.packer;
 
 import com.mobiquityinc.exception.ValidationException;
-
 import java.util.function.Function;
 
 /**
@@ -16,7 +15,7 @@ public class Validator<T> {
 
     /**
      * @param condition the condition to check
-     * @param message   the message of {@link ValidationException} when the condition is not met
+     * @param message the message of {@link ValidationException} when the condition is not met
      */
     public Validator(Function<T, Boolean> condition, String message) {
         this.condition = condition;

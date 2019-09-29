@@ -1,16 +1,14 @@
 package com.mobiquityinc.packer;
 
 import com.mobiquityinc.exception.ValidationException;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * The class {@link LineParser} is responsible for parsing a line from input file.
- * A line pattern is "capacity : (item1.index,item1.weight,€item2.cost) (item1.index,item1.weight,€item2.cost) ..."
- * For example this is a valid line:
+ * The class {@link LineParser} is responsible for parsing a line from input file. A line pattern is "capacity :
+ * (item1.index,item1.weight,€item2.cost) (item1.index,item1.weight,€item2.cost) ..." For example this is a valid line:
  * 81 : (1,53.38,€45) (2,88.62,€98) (3,78.48,€3) (4,72.30,€76) (5,30.18,€9) (6,46.34,€48)
  *
  * @author Taher Khorshidi
@@ -28,7 +26,8 @@ public class LineParser {
     /**
      * @param line input line.
      * @return the corresponding {@link PackagingScenario}
-     * @throws ValidationException if the line doesn't match correct line pattern or contains an invalid scenario or any invalid item.
+     * @throws ValidationException if the line doesn't match correct line pattern or contains an invalid scenario or any
+     * invalid item.
      */
     public PackagingScenario parse(String line) throws ValidationException {
         Matcher lineMatcher = Pattern.compile("^(-?\\d+) : (.+)").matcher(line);

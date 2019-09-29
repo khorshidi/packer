@@ -19,6 +19,12 @@ public class PackerTest {
     }
 
     @Test
+    public void pack_multi_line() throws Exception {
+        String actual = Packer.pack(absolutePath("multi_line"));
+        assertValidOutput(actual, "-\n5,4,2,1\n4,1\n3,4,2\n5,2,1\n1,4\n3,2,4,6,8,7\n7,4,2\n5,2,1\n5,2,4,3\n");
+    }
+
+    @Test
     public void pack_simple_single_line() throws Exception {
         String actual = Packer.pack(absolutePath("simple_single_line"));
         assertValidOutput(actual, "8,9");
@@ -106,11 +112,11 @@ public class PackerTest {
 
     private void assertValidOutput(String actual, String expected) {
         Set<Set<String>> act = Stream.of(actual.split("\n"))
-                .map(a -> Stream.of(a.split(",")).collect(Collectors.toSet()))
-                .collect(Collectors.toSet());
+              .map(a -> Stream.of(a.split(",")).collect(Collectors.toSet()))
+              .collect(Collectors.toSet());
         Set<Set<String>> exp = Stream.of(expected.split("\n"))
-                .map(a -> Stream.of(a.split(",")).collect(Collectors.toSet()))
-                .collect(Collectors.toSet());
+              .map(a -> Stream.of(a.split(",")).collect(Collectors.toSet()))
+              .collect(Collectors.toSet());
         Assert.assertEquals(act, exp);
     }
 
