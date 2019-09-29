@@ -76,7 +76,7 @@ public class PackagingScenario {
     private int findPrecisionFactor() {
         int max = items.stream()
               .map(Item::getWeight)
-              .mapToInt(w -> String.valueOf(w).contains(".") ? String.valueOf(w).split("\\.").length : 0)
+              .mapToInt(w -> String.valueOf(w).split("\\.").length)
               .max().orElse(0);
         return (int) Math.pow(10, max);
     }

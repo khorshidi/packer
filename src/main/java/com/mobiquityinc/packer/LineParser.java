@@ -17,6 +17,8 @@ public class LineParser {
 
     private List<Validator<PackagingScenario>> scenarioValidators;
     private List<Validator<Item>> itemValidators;
+    private Pattern linePattern = Pattern.compile("^(-?\\d+) : (.+)");
+    private Pattern fieldsPattern = Pattern.compile("\\((-?\\d+),(-?\\d+\\.?\\d*?),€(-?\\d+)\\)");
 
     public LineParser(List<Validator<PackagingScenario>> scenarioValidators, List<Validator<Item>> itemValidators) {
         this.scenarioValidators = scenarioValidators;
@@ -30,7 +32,7 @@ public class LineParser {
      * invalid item.
      */
     public PackagingScenario parse(String line) throws ValidationException {
-        Matcher lineMatcher = Pattern.compile("^(-?\\d+) : (.+)").matcher(line);
+        Matcher lineMatcher = linePattern.matcher(line);
         if (!lineMatcher.find()) {
             throw new ValidationException("invalid line: [" + line + "]");
         }
@@ -55,7 +57,7 @@ public class LineParser {
     }
 
     private List<Item> extractItems(String itemsString) throws ValidationException {
-        Matcher matcher = Pattern.compile("\\((-?\\d+),(-?\\d+\\.?\\d*?),€(-?\\d+)\\)").matcher(itemsString);
+        Matcher matcher = fieldsPattern.matcher(itemsString);
         List<Item> items = new ArrayList<>();
         try {
             while (matcher.find()) {
