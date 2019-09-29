@@ -36,6 +36,12 @@ public class PackerTest {
         Assert.assertEquals(pack, "");
     }
 
+    @Test
+    public void pack_different_decimal_places() throws Exception {
+        String pack = Packer.pack(absolutePath("different_decimal_places"));
+        Assert.assertEquals(pack, "4");
+    }
+
     @Test(expected = APIException.class)
     public void pack_zero_capacity() throws Exception {
         Packer.pack(absolutePath("scenario_with_zero_capacity"));
