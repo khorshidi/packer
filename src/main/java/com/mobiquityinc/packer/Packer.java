@@ -22,11 +22,6 @@ public class Packer {
     private Packer() {
     }
 
-    public static void main(String[] args) throws APIException {
-        String pack = Packer.pack("/home/taher/workspace/mobiquity/packer/src/test/resources/multi_line");
-        System.out.println(pack);
-    }
-
     /**
      * @param filePath input file absolute path.
      * @return an String representing the solution of all Knapsack problems in the file separated by new-line character
